@@ -1,0 +1,37 @@
+<div class="grid">
+  <div class="flex justify-content-center col-4">
+    <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <h2>Login To Your Account</h2>
+      <div class="form-control">
+        <div class="input-container p-input-icon-right">
+          <i class="pi pi-envelope"></i>
+          <input pInputText formControlName="email" id="email" placeholder="Email" [ngClass]="{
+            'ng-dirty': loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+          }" />
+        </div>
+        <div class="text-left">
+          <small *ngIf="!loginForm.get('email')?.valid && loginForm.get('email')?.touched" class="text-red-500">
+            Required
+          </small>
+        </div>
+      </div>
+      <div class="form-control">
+        <p-password formControlName="password" id="password" placeholder="Password" [toggleMask]="true" [ngClass]="{
+          'ng-dirty': loginForm.get('password')?.invalid && loginForm.get('password')?.touched
+        }"/>
+        <div class="text-left">
+          <small *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched" class="text-red-500">
+            Required
+          </small>
+        </div>
+      </div>
+      <!-- <button pButton pRipple (click)="showError()" type="submit" label="Login"></button> -->
+      <button pButton pRipple type="submit" label="Login"></button>
+      <small class="mt-2 text-center">Forgot password? <a class="text-primary hover:underline cursor-pointer font-medium">Click here</a> to reset.</small>
+    </form>
+  </div>
+  <div class="col-8 background">
+    <img src="../../../assets/images/login-logo.png" alt="Login Image" />
+  </div>
+</div>
+<p-toast></p-toast>

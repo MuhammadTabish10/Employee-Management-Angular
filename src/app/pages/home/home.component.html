@@ -1,0 +1,35 @@
+<div class="home-container">
+  <!-- <app-header (toggleSidebarEvent)="toggleSidebar()"></app-header>
+  <app-sidebar></app-sidebar> -->
+  <div class="grid flex justify-content-center">
+    <div class="col-sm-12 col-md-4">
+      <div class="container">
+        <app-card title="Employees" content="50" iconClass="pi pi-users"></app-card>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <div class="container">
+        <app-card title="Departments" content="07" iconClass="pi pi-folder"></app-card>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <div class="container">
+        <app-card title="Users" content="03" iconClass="pi pi-user"></app-card>
+      </div>
+    </div>
+    <div class="card ml-8 mb-5 pb-3 col-5 col-sm-12 mx-auto flex justify-content-center">
+        <div class="card-body">
+          <h2 class="text-center">Employees</h2>
+            <p-chart type="doughnut" [data]="data"></p-chart>
+        </div>
+    </div>
+    <div class="card ml-8 mb-5 pb-3 col-5 col-sm-12 mx-auto flex justify-content-center">
+        <div class="card-body ">
+            <h2 class="text-center">Departments</h2>
+            <p-chart type="doughnut" [data]="data"></p-chart>
+        </div>
+    </div>
+  </div>  
+</div> 
+
+

@@ -1,0 +1,17 @@
+ <!-- <div class="card" *ngIf="showHeader"> -->
+ <div class="card">
+    <p-menubar>
+        <ng-template pTemplate="start">
+            <ng-container>
+                <i class="pi pi-bars custom-icon mr-3 ml-2" (click)="toggleSidebar()"></i>
+                <img src="../../../assets/images/logo-bg.png" height="45"/>
+            </ng-container>
+        </ng-template>
+        <ng-template pTemplate="end">
+            <button class="p-link pr-1" (click)="menu.toggle($event)">
+                <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" styleClass="mr-2" shape="circle"></p-avatar>
+            </button>
+            <p-menu #menu [model]="items" [popup]="true"></p-menu>
+        </ng-template>
+    </p-menubar>
+</div>

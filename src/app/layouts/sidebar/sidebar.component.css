@@ -1,0 +1,30 @@
+:host ::ng-deep .p-sidebar {
+    background-color: #2B2D42;
+  }
+
+:host ::ng-deep .p-sidebar .header {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+}
+
+.sidebar-item{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #ffff;
+    transition-duration: 150;
+    border-radius: 2px;
+    text-size-adjust: 700;
+}
+
+.sidebar-item:hover{
+    color: #2B2D42;
+}
+
+.font-bold{
+    color: #ffff;
+}
+
+.font-bold:hover{
+    color: #2B2D42;
+}

@@ -1,0 +1,29 @@
+
+/* Change background color of menubar */
+:host ::ng-deep .p-menubar {
+    background-color: #2B2D42;
+    border: #2B2D42;
+    border-radius: 0%; 
+  }
+
+/* Change color of icons using custom style classes */
+.custom-icon{
+  color: #ffffff; 
+  cursor: pointer;
+}
+
+/* Remove hover effect from bars icon */
+:host ::ng-deep .p-menubar .p-menuitem-link.custom-icon:hover .pi-bars {
+    background-color: transparent !important; /* Remove background-color on hover */
+    color: inherit !important; /* Inherit the color */
+}
+
+:host ::ng-deep .p-menubar  {
+  margin-bottom: 10px;
+}
+
+:host ::ng-deep .p-menubar-start{
+  display: flex;
+  align-items: center;
+}
+ 

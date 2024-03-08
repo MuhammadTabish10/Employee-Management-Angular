@@ -1,0 +1,58 @@
+html,body {
+  overflow-y: hidden;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-control{
+  margin-bottom: 5px;
+}
+
+.form-control i{
+  transition: transform 0.3s ease-in-out;
+}
+
+.with-padding{
+  height: 100px;
+}
+
+.form h2{
+  text-align: center;
+}
+
+.form button{
+  background-color: #2B2D42;
+  color: white;
+  margin-top: 10px;
+}
+
+:host ::ng-deep .p-inputtext:focus {
+  outline: none; 
+  box-shadow: none; 
+}
+
+
+.background{
+  padding: 0px; 
+  margin: 0px;
+}
+
+.background img{
+  width: 100%; 
+  object-fit: cover; 
+  height: 100%
+}
+
+.input-container {
+  position: relative;
+}
+
+.input-container i {
+  position: absolute;
+  top: 50%;
+}
+
