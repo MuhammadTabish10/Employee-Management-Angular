@@ -4,18 +4,20 @@
             <div class="card">
                 <div class="flex justify-content-between">
                     <h1 class="m-0 heading">Employees</h1>
-                    <button pButton pRipple label="Create Employee" class="mb-3 mr-3 addBtn" routerLink="/create-account"></button>
+                    <button pButton pRipple label="Create Employee" class="mb-3 mr-3 addBtn"
+                        routerLink="/create-account"></button>
                 </div>
                 <p-table #dt1 [value]="employeeList" dataKey="id" [rows]="10" [loading]="loading" [paginator]="true"
                     [rowsPerPageOptions]="[5, 10, 20]" [rowHover]="true" styleClass="p-datatable-gridlines"
-                    [globalFilterFields]="['firstName','lastName']" responsiveLayout="scroll">
+                    [globalFilterFields]="['firstName', 'lastName']" responsiveLayout="scroll">
                     <ng-template pTemplate="caption">
                         <div class="flex justify-content-between flex-column sm:flex-row">
                             <div class="mb-2">
-                                <button pButton label="Clear" class="p-button-outlined custom-button" icon="pi pi-filter-slash"
-                                    (click)="clear(dt1)"></button>
-                                <p-dropdown class="ml-3" [styleClass]="'custom-dropdown'" [options]="options" [(ngModel)]="selectedStatus"
-                                    (ngModelChange)="onStatusChange($event)" placeholder="Select"></p-dropdown>
+                                <button pButton label="Clear" class="p-button-outlined custom-button"
+                                    icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                                <p-dropdown class="ml-3" [styleClass]="'custom-dropdown'" [options]="options"
+                                    [(ngModel)]="selectedStatus" (ngModelChange)="onStatusChange($event)"
+                                    placeholder="Select"></p-dropdown>
                             </div>
                             <span class="p-input-icon-left mb-2">
                                 <i class="pi pi-search"></i>
@@ -62,18 +64,17 @@
                             <td class="text-center">{{ employee.department.name }}</td>
                             <td class="text-center">{{ employee.phoneNumber }}</td>
                             <td class="text-center">
-                                <button pTooltip="View" *ngIf="activeStatus" tooltipPosition="bottom" pButton pRipple type="button"
-                                    icon="pi pi-eye"
+                                <button pTooltip="View" *ngIf="activeStatus" tooltipPosition="bottom" pButton pRipple
+                                    type="button" icon="pi pi-eye"
                                     class="p-button-rounded p-button-secondary p-button-outlined mx-1"></button>
-                                <button pTooltip="Edit" *ngIf="activeStatus" tooltipPosition="bottom" pButton pRipple type="button"
-                                    icon="pi pi-file-edit" class="p-button-rounded p-button-outlined mx-1"
+                                <button pTooltip="Edit" *ngIf="activeStatus" tooltipPosition="bottom" pButton pRipple
+                                    type="button" icon="pi pi-file-edit" class="p-button-rounded p-button-outlined mx-1"
                                     (click)="onEditEmployee(employee.id)"></button>
-                                <button pTooltip="Deactivate" *ngIf="activeStatus" tooltipPosition="bottom" pButton pRipple type="button"
-                                    icon="pi pi-times" (click)="onDeleteEmployee(employee.id)"
+                                <button pTooltip="Deactivate" *ngIf="activeStatus" tooltipPosition="bottom" pButton
+                                    pRipple type="button" icon="pi pi-times" (click)="onDeleteEmployee(employee.id)"
                                     class="p-button-rounded p-button-danger p-button-outlined mx-1"></button>
-                                    <button pTooltip="Activate" tooltipPosition="bottom" *ngIf="!activeStatus" pButton pRipple
-                                    type="button" icon="pi pi-check"
-                                    
+                                <button pTooltip="Activate" tooltipPosition="bottom" *ngIf="!activeStatus" pButton
+                                    pRipple type="button" icon="pi pi-check"
                                     class="p-button-rounded p-button-success p-button-outlined mx-2"
                                     (click)="onActiveEmployee(employee.id)"></button>
                             </td>
@@ -89,7 +90,7 @@
                 </p-table>
             </div>
         </div>
-    
+
         <p-dialog [(visible)]="deleteEmployeeDialog" header="Confirm" [modal]="true" [style]="{ width: '450px' }">
             <div class="flex align-items-center justify-content-center">
                 <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
@@ -103,7 +104,6 @@
             </ng-template>
         </p-dialog>
     </div>
-    
+
     <p-toast [breakpoints]="{ '920px': { width: '100%', right: '0', left: '0' } }"></p-toast>
 </div>
-
