@@ -12,4 +12,5 @@ export const API_ENDPOINTS = {
     GET_EMPLOYEE_BY_ID_URL: `${environment.baseUrl}/employee/`,
     DELETE_EMPLOYEE_BY_ID_URL: `${environment.baseUrl}/employee/`,
     UPDATE_EMPLOYEE_BY_ID_URL: `${environment.baseUrl}/employee/`,
+    UPDATE_EMPLOYEE_STATUS_TO_ACTIVE_URL: `${environment.baseUrl}/employee/`,
   };

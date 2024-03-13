@@ -62,15 +62,20 @@
                             <td class="text-center">{{ employee.department.name }}</td>
                             <td class="text-center">{{ employee.phoneNumber }}</td>
                             <td class="text-center">
-                                <button pTooltip="View" tooltipPosition="bottom" pButton pRipple type="button"
+                                <button pTooltip="View" *ngIf="activeStatus" tooltipPosition="bottom" pButton pRipple type="button"
                                     icon="pi pi-eye"
                                     class="p-button-rounded p-button-secondary p-button-outlined mx-1"></button>
-                                <button pTooltip="Edit" tooltipPosition="bottom" pButton pRipple type="button"
+                                <button pTooltip="Edit" *ngIf="activeStatus" tooltipPosition="bottom" pButton pRipple type="button"
                                     icon="pi pi-file-edit" class="p-button-rounded p-button-outlined mx-1"
-                                    (click)="onEditAccount(employee.id)"></button>
-                                <button pTooltip="Deactivate" tooltipPosition="bottom" pButton pRipple type="button"
-                                    icon="pi pi-times" (click)="onDeleteAccount(employee.id)"
+                                    (click)="onEditEmployee(employee.id)"></button>
+                                <button pTooltip="Deactivate" *ngIf="activeStatus" tooltipPosition="bottom" pButton pRipple type="button"
+                                    icon="pi pi-times" (click)="onDeleteEmployee(employee.id)"
                                     class="p-button-rounded p-button-danger p-button-outlined mx-1"></button>
+                                    <button pTooltip="Activate" tooltipPosition="bottom" *ngIf="!activeStatus" pButton pRipple
+                                    type="button" icon="pi pi-check"
+                                    
+                                    class="p-button-rounded p-button-success p-button-outlined mx-2"
+                                    (click)="onActiveEmployee(employee.id)"></button>
                             </td>
                         </tr>
                     </ng-template>
@@ -85,14 +90,14 @@
             </div>
         </div>
     
-        <p-dialog [(visible)]="deleteAccountDialog" header="Confirm" [modal]="true" [style]="{ width: '450px' }">
+        <p-dialog [(visible)]="deleteEmployeeDialog" header="Confirm" [modal]="true" [style]="{ width: '450px' }">
             <div class="flex align-items-center justify-content-center">
                 <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
                 <span>Are you sure you want to deactivate selected Employee?</span>
             </div>
             <ng-template pTemplate="footer">
                 <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No"
-                    (click)="deleteAccountDialog = false"></button>
+                    (click)="deleteEmployeeDialog = false"></button>
                 <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Yes"
                     (click)="confirmDeleteSelected()"></button>
             </ng-template>

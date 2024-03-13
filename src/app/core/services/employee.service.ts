@@ -26,9 +26,16 @@ export class EmployeeService {
     );
   }
 
-  deleteEmployeeById(id: number): Observable<void> {
-    return this.http.delete<void>(
+  deleteEmployeeById(id: number): Observable<any> {
+    return this.http.delete<any>(
       `${API_ENDPOINTS.DELETE_EMPLOYEE_BY_ID_URL}${id}`
+    );
+  }
+
+  setEmployeeStatusToActiveById(id: number): Observable<any> {
+    return this.http.put<any>(
+      `${API_ENDPOINTS.UPDATE_EMPLOYEE_STATUS_TO_ACTIVE_URL}${id}/status`,
+      null
     );
   }
 

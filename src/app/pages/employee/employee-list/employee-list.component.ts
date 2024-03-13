@@ -14,7 +14,6 @@ import { finalize } from 'rxjs';
   providers: [MessageService],
 })
 export class EmployeeListComponent implements OnInit {
-
   @ViewChild('filter') filter!: ElementRef;
   employeeList: Employee[] = [];
   loading: any;
@@ -22,7 +21,7 @@ export class EmployeeListComponent implements OnInit {
   selectedStatus: string = 'Active';
   activeStatus: boolean = true;
   deleteId!: number;
-  deleteAccountDialog: any;
+  deleteEmployeeDialog: any;
   refresh: boolean = true;
   visible: boolean = false;
 
@@ -41,11 +40,10 @@ export class EmployeeListComponent implements OnInit {
     { label: 'InActive', value: 'InActive' },
   ];
 
-
-  getAllEmployees(){  
+  getAllEmployees() {
     this.employeeService
       .getAllEmployees(this.activeStatus)
-      .pipe(finalize(() => this.refresh = false))
+      .pipe(finalize(() => (this.refresh = false)))
       .subscribe((employeeList) => (this.employeeList = employeeList));
   }
 
@@ -53,7 +51,6 @@ export class EmployeeListComponent implements OnInit {
     this.refresh = true;
     this.getAllEmployees();
   }
-
 
   //   For table filtering purpose
   onGlobalFilter(table: Table, event: Event) {
@@ -75,28 +72,28 @@ export class EmployeeListComponent implements OnInit {
     this.filter.nativeElement.value = '';
   }
 
- 
-
   confirmDeleteSelected() {
-    this.employeeService
-      .deleteEmployeeById(this.deleteId)
-      .subscribe(() => {
-        this.alert();
-        this.getAllEmployees();
-        this.deleteAccountDialog = false;
-      });
+    this.employeeService.deleteEmployeeById(this.deleteId).subscribe(() => {
+      this.alert();
+      this.getAllEmployees();
+      this.deleteEmployeeDialog = false;
+    });
   }
 
-  onDeleteAccount(id: number) {
+  onDeleteEmployee(id: number) {
     this.deleteId = id;
-    this.deleteAccountDialog = true;
+    this.deleteEmployeeDialog = true;
   }
 
-  onCancel() {
-    this.visible = false;
+  onActiveEmployee(id: number) {
+    this.employeeService.setEmployeeStatusToActiveById(id).subscribe(() => {
+      this.success();
+      this.selectedStatus = 'Active';
+      this.onStatusChange(this.selectedStatus);
+    });
   }
 
-  onEditAccount(id: number) {
+  onEditEmployee(id: number) {
     const queryParams = { updateMode: 'true', id: id };
     this.router.navigate(['create-account'], {
       queryParams: queryParams,
