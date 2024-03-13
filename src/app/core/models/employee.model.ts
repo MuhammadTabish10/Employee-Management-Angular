@@ -12,4 +12,4 @@ export interface Employee {
     status: boolean;
     jobtitle: JobTitle;
     department: Department;
-}
+} 

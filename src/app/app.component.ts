@@ -1,7 +1,5 @@
-import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
-import { SidebarComponent } from './layouts/sidebar/sidebar.component';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { LoaderService } from './core/services/loader.service';
-import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +9,6 @@ import { PrimeNGConfig } from 'primeng/api';
 export class AppComponent {
   title = 'EmployeeDashboard';
   constructor(
-    private primengConfig: PrimeNGConfig,
     public loaderService: LoaderService,
     private cdr: ChangeDetectorRef
   ) {}

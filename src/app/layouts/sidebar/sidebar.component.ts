@@ -1,24 +1,24 @@
 import { Component } from '@angular/core';
-import { RouteService } from '../../core/services/route.service';
 import { Router } from '@angular/router';
+import { ROUTES } from '../../shared/constants/routes.constants';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.css'
+  styleUrl: './sidebar.component.css',
 })
 export class SidebarComponent {
   sidebarVisible: boolean = false;
 
-  constructor(private router: Router, private routeService: RouteService) {}
+  constructor(private router: Router) {}
 
   navigateToHome() {
-    this.router.navigateByUrl(this.routeService.ROUTES.HOME);
+    this.router.navigateByUrl(ROUTES.HOME);
     this.sidebarVisible = false;
   }
 
   navigateToEmployeeList() {
-    this.router.navigateByUrl(this.routeService.ROUTES.EMPLOYEE_LIST);
+    this.router.navigateByUrl(ROUTES.EMPLOYEE_LIST);
     this.sidebarVisible = false;
   }
 }

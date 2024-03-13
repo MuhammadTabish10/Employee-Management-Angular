@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from '../../../environments/environment.development';
 import { Observable} from 'rxjs';
-import { User } from '../models/user.model';
+import { API_ENDPOINTS } from '../../shared/constants/api-endpoints.constants';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,7 +17,6 @@ export class LoginService {
   constructor(private http:HttpClient) { }
 
   login(data: any): Observable<any>{
-    let url = `${environment.baseUrl}/login`
-    return this.http.post<any>(url, data, httpOptions);
+    return this.http.post<any>(API_ENDPOINTS.LOGIN_URL, data, httpOptions);
   }
 }

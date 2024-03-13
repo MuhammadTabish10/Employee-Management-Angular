@@ -29,7 +29,7 @@ import { AppComponent } from './app.component';
     HttpClientModule
   ],  
   providers: [
-    provideClientHydration(),
+    // provideClientHydration(),
     provideHttpClient(withFetch(), withInterceptors([authInterceptor]))
   ],
   bootstrap: [AppComponent]

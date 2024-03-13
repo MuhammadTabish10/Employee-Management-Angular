@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { RouteService } from '../../core/services/route.service';
 import { LoginService } from '../../core/services/login.service';
+import { ROUTES } from '../../shared/constants/routes.constants';
 
 @Component({
   selector: 'app-login',
@@ -17,14 +17,11 @@ export class LoginComponent implements OnInit {
   constructor(
     private loginService: LoginService,
     private messageService: MessageService,
-    private router: Router,
-    private routeService: RouteService
+    private router: Router
   ) {}
 
   ngOnInit() {
-    if (typeof localStorage !== 'undefined') {
-      localStorage.clear();
-    }
+    localStorage.clear();
     this.loginForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required]),
@@ -42,12 +39,10 @@ export class LoginComponent implements OnInit {
         next: (res) => {
           console.log('Login successful:', res);
           localStorage.setItem("token", res.jwt);
-          // Navigate to HOME route after successful login
-          this.router.navigateByUrl(this.routeService.ROUTES.HOME);
+          this.router.navigateByUrl(ROUTES.HOME);
         },
         error: (error) => {
           console.error('Login failed:', error);
-          // Show error message in toast
           this.showError(error.error.error);
         }
       });
