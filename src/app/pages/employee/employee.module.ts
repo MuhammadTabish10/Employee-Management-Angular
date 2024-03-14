@@ -6,28 +6,41 @@ import { PaginatorModule } from "primeng/paginator";
 import { ToastModule } from "primeng/toast";
 import { RippleModule } from "primeng/ripple";
 import { ButtonModule } from 'primeng/button';
-import { InputTextModule } from "primeng/inputtext";
+import { InputMaskModule } from 'primeng/inputmask';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DialogModule } from "primeng/dialog";
 import { DropdownModule } from "primeng/dropdown";
 import { ProgressBarModule } from "primeng/progressbar";
+import { CalendarModule } from "primeng/calendar";
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { EmployeeListComponent } from './employee-list/employee-list.component';
+import { EmployeeComponent } from './employee/employee.component';
 
 @NgModule({
-  declarations: [EmployeeListComponent],
-  exports: [EmployeeListComponent],
+  declarations: [EmployeeListComponent, EmployeeComponent],
+  exports: [EmployeeListComponent, EmployeeComponent],
   imports: [
     CommonModule,
     TableModule,
     TooltipModule,
     PaginatorModule,
+    InputTextareaModule,
     ToastModule,
     RippleModule,
     ButtonModule,
+    InputMaskModule,
     InputTextModule,
+    InputNumberModule,
     DialogModule,
     ProgressBarModule,
-    DropdownModule
+    DropdownModule,
+    CalendarModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class EmployeeModule { }

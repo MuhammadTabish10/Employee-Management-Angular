@@ -1,0 +1,87 @@
+<div class="m-5 form-container">
+    <h1 class="mb-5 heading">
+        {{ mode == "Add" ? "Add Employee" : "Update Employee" }}
+    </h1>
+    <form action="" [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+        <div class="p-fluid p-formgrid grid">
+            <div class="field col-12 md:col-6">
+                <label htmlFor="firstName"><strong>First Name</strong></label>
+                <input pInputTextarea id="firstName" rows="4" formControlName="firstName" placeholder="Enter FirstName"
+                    [ngClass]="{'ng-dirty':employeeForm.get('firstName')?.touched && employeeForm.get('firstName')?.invalid}" />
+                <small *ngIf="!employeeForm.get('firstName')?.valid && employeeForm.get('firstName')?.touched" class="text-red-500">
+                    Required
+                </small>
+            </div>
+            <div class="field col-12 md:col-6">
+                <label htmlFor="lastName"><strong>Last Name</strong></label>
+                <input pInputTextarea id="lastName" rows="4" formControlName="lastName" placeholder="Enter Last Name"
+                    [ngClass]="{'ng-dirty':employeeForm.get('lastName')?.touched && employeeForm.get('lastName')?.invalid}" />
+                <small *ngIf="!employeeForm.get('lastName')?.valid && employeeForm.get('lastName')?.touched" class="text-red-500">
+                    Required
+                </small>
+            </div>
+            <div class="field col-12 md:col-6">
+                <label htmlFor="phoneNumber"><strong>Phone</strong></label>
+                <input pInputTextarea id="phoneNumber" rows="4" formControlName="phoneNumber" placeholder="Enter Phone"
+                    [ngClass]="{'ng-dirty':employeeForm.get('phoneNumber')?.touched && employeeForm.get('phoneNumber')?.invalid}" />
+                <small *ngIf="!employeeForm.get('phoneNumber')?.valid && employeeForm.get('phoneNumber')?.touched" class="text-red-500">
+                    Required
+                </small>
+            </div>
+            <div class="field col-12 md:col-6">
+                <label htmlFor="address"><strong>Address</strong></label>
+                <input pInputTextarea id="address" rows="4" formControlName="address" placeholder="Enter Address"
+                    [ngClass]="{'ng-dirty':employeeForm.get('address')?.touched && employeeForm.get('address')?.invalid}" />
+                <small *ngIf="!employeeForm.get('address')?.valid && employeeForm.get('address')?.touched" class="text-red-500">
+                    Required
+                </small>
+            </div>
+            <div class="field col-12 md:col-6">
+                <label htmlFor="dateOfBirth">Date Of Birth</label>
+                <p-calendar dateFormat="yy-mm-dd" [showIcon]="true" formControlName="dateOfBirth"
+                    placeholder="Select Date Of Birth"
+                    [ngClass]="{'ng-dirty':employeeForm.get('dateOfBirth')?.touched && employeeForm.get('dateOfBirth')?.invalid}"></p-calendar>
+                <small *ngIf="!employeeForm.get('dateOfBirth')?.valid && employeeForm.get('dateOfBirth')?.touched"
+                    class="text-red-500">
+                    Required
+                </small>
+            </div>
+            <div class="field col-12 md:col-6">
+                <label htmlFor="hireDate">Hire Date</label>
+                <p-calendar dateFormat="yy-mm-dd" [showIcon]="true" formControlName="hireDate"
+                    placeholder="Select Hire Date"
+                    [ngClass]="{'ng-dirty':employeeForm.get('hireDate')?.touched && employeeForm.get('hireDate')?.invalid}"></p-calendar>
+                <small *ngIf="!employeeForm.get('hireDate')?.valid && employeeForm.get('hireDate')?.touched"
+                    class="text-red-500">
+                    Required
+                </small>
+            </div>
+            <div class="field col-12 md:col-6">
+                <label><strong>Job Title</strong></label>
+                <p-dropdown [options]="jobTitles" optionLabel="title" formControlName="jobTitle" placeholder="Select Job Title"
+                    [ngClass]="{'ng-dirty':employeeForm.get('jobTitle')?.touched && employeeForm.get('jobTitle')?.invalid}"
+                    ></p-dropdown>
+                <small *ngIf="!employeeForm.get('jobTitle')?.valid && employeeForm.get('jobTitle')?.touched"
+                    class="text-red-500">
+                    Required
+                </small>
+            </div>
+            <div class="field col-12 md:col-6">
+                <label><strong>Department</strong></label>
+                <p-dropdown [options]="departments" optionLabel="name" formControlName="department" placeholder="Select Department"
+                    [ngClass]="{'ng-dirty':employeeForm.get('department')?.touched && employeeForm.get('department')?.invalid}"
+                    ></p-dropdown>
+                <small *ngIf="!employeeForm.get('department')?.valid && employeeForm.get('department')?.touched"
+                    class="text-red-500">
+                    Required
+                </small>
+            </div>
+            <div class="flex justify-content-end w-full">
+                <button pButton label="Cancel" type="button" class="mx-3 p-button-secondary editBtn"
+                    *ngIf="mode == 'Update'" (click)="onCancel()"></button>
+                <button pButton label="Submit" type="Submit"  class="mx-3 submit-btn" style="width: 150px;"></button>
+            </div>
+        </div>
+    </form>
+</div>
+<p-toast [breakpoints]="{'920px': {width: '100%', right: '0', left: '0'}}"></p-toast>

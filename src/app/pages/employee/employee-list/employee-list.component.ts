@@ -6,6 +6,7 @@ import { SelectItem } from 'primeng/api';
 import { EmployeeService } from '../../../core/services/employee.service';
 import { Employee } from '../../../core/models/employee.model';
 import { finalize } from 'rxjs';
+import { ROUTES } from '../../../shared/constants/routes.constants';
 
 @Component({
   selector: 'app-employee-list',
@@ -95,9 +96,13 @@ export class EmployeeListComponent implements OnInit {
 
   onEditEmployee(id: number) {
     const queryParams = { updateMode: 'true', id: id };
-    this.router.navigate(['create-account'], {
+    this.router.navigate([ROUTES.EMPLOYEE], {
       queryParams: queryParams,
     });
+  }
+
+  navigateToCreateEmployee() {
+    this.router.navigateByUrl(ROUTES.EMPLOYEE);
   }
 
   success() {

@@ -10,6 +10,6 @@ export interface Employee {
     dateOfBirth: string;
     hireDate: string;
     status: boolean;
-    jobtitle: JobTitle;
+    jobTitle: JobTitle;
     department: Department;
 } 

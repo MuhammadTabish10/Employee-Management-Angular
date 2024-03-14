@@ -1,0 +1,30 @@
+.form-container {
+  border: 1px solid #ccc; /* Border color and width */
+  border-radius: 5px; /* Border radius for rounded corners */
+  padding: 20px; /* Optional: Add padding for better appearance */
+}
+
+
+.heading{
+  color: #2B2D42; 
+  font-size: 20px; 
+  font-weight: 700;
+}
+
+.submit-btn {
+  width: 120px;
+}
+
+.editBtn {
+  width: 120px;
+}
+
+label {
+  font-weight: bold;
+}
+
+
+:host ::ng-deep .p-button {
+  background: #2B2D42;
+  border: 1px solid #2B2D42;
+}

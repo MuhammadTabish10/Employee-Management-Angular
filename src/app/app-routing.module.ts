@@ -5,6 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { EmployeeListComponent } from './pages/employee/employee-list/employee-list.component';
 import { LayoutComponent } from './layouts/layout/layout.component';
+import { EmployeeComponent } from './pages/employee/employee/employee.component';
 
 const routes: Routes = [
   { path: '', redirectTo: ROUTES.LOGIN, pathMatch: 'full'},
@@ -20,6 +21,10 @@ const routes: Routes = [
       {
         path:ROUTES.EMPLOYEE_LIST,
         component: EmployeeListComponent
+      },
+      {
+        path:ROUTES.EMPLOYEE,
+        component: EmployeeComponent
       }
     ]
   }
