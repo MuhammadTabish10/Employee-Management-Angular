@@ -5,6 +5,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { ChartModule } from 'primeng/chart';
 
 import { HomeComponent } from './home.component';
+import { HomeRoutingModule } from './home-routing.module';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -13,7 +14,8 @@ import { HomeComponent } from './home.component';
     CommonModule,
     LayoutModule,
     SharedModule,
-    ChartModule
+    ChartModule,
+    HomeRoutingModule
   ]
 })
 export class HomeModule { }

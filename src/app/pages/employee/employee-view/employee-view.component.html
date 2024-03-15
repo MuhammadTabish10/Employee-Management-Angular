@@ -1,0 +1,44 @@
+<div class="m-5 form-container">
+    <div class="card">
+        <div class="flex justify-content-between ">
+            <h1 class="heading">Employee Details</h1>
+        </div>
+        <div class="p-fluid  grid">
+            <div class="field col-12 md:col-6">
+                <label htmlFor="firstName"><strong>First Name</strong></label>
+                <input pInputTextarea id="firstName" rows="4"  [ngModel]="employee.firstName" readonly/>
+            </div>
+            <div class="field col-12 md:col-6">
+                <label htmlFor="lastName"><strong>Last Name</strong></label>
+                <input pInputTextarea id="lastName" rows="4"  [ngModel]="employee.lastName" readonly/>
+            </div>
+            <div class="field col-12 md:col-6">
+                <label htmlFor="phoneNumber"><strong>Phone Number</strong></label>
+                <input pInputTextarea id="phoneNumber" rows="4"  [ngModel]="employee.phoneNumber" readonly/>
+            </div>
+            <div class="field col-12 md:col-6">
+                <label htmlFor="address"><strong>Address</strong></label>
+                <input pInputTextarea id="address" rows="4"  [ngModel]="employee.address" readonly/>
+            </div>
+            <div class="field col-12 md:col-6">
+                <label htmlFor="dateOfBirth"><strong>Date Of Birth</strong></label>
+                <input pInputTextarea id="dateOfBirth" rows="4"  [ngModel]="employee.dateOfBirth" readonly/>
+            </div>
+            <div class="field col-12 md:col-6">
+                <label htmlFor="hireDate"><strong>Hire Date</strong></label>
+                <input pInputTextarea id="hireDate" rows="4"  [ngModel]="employee.hireDate" readonly/>
+            </div>
+            <div class="field col-12 md:col-6">
+                <label htmlFor="jobTitle"><strong>Job Title</strong></label>
+                <input pInputTextarea id="jobTitle" rows="4"  [ngModel]="employee.jobTitle.title" readonly/>
+            </div>
+            <div class="field col-12 md:col-6">
+                <label htmlFor="department"><strong>Department</strong></label>
+                <input pInputTextarea id="department" rows="4"  [ngModel]="employee.department.name" readonly/>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<p-toast [breakpoints]="{'920px': {width: '100%', right: '0', left: '0'}}"></p-toast>

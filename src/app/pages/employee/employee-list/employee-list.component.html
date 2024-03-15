@@ -65,7 +65,7 @@
                             <td class="text-center">{{ employee.phoneNumber }}</td>
                             <td class="text-center">
                                 <button pTooltip="View" *ngIf="activeStatus" tooltipPosition="bottom" pButton pRipple
-                                    type="button" icon="pi pi-eye"
+                                    type="button" icon="pi pi-eye"  routerLink="{{employee.id}}"
                                     class="p-button-rounded p-button-secondary p-button-outlined mx-1"></button>
                                 <button pTooltip="Edit" *ngIf="activeStatus" tooltipPosition="bottom" pButton pRipple
                                     type="button" icon="pi pi-file-edit" class="p-button-rounded p-button-outlined mx-1"

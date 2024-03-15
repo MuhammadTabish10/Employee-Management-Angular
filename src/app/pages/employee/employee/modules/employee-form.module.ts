@@ -16,14 +16,13 @@ import { ProgressBarModule } from "primeng/progressbar";
 import { CalendarModule } from "primeng/calendar";
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EmployeeFormRoutingModule } from './employee-form-routing.module';
+import { EmployeeComponent } from '../employee.component';
 
-import { EmployeeListComponent } from './employee-list/employee-list.component';
-import { EmployeeViewComponent } from './employee-view/employee-view.component';
-import { EmployeeRoutingModule } from './employee-routing.module';
 
 @NgModule({
-  declarations: [EmployeeListComponent, EmployeeViewComponent],
-  exports: [EmployeeListComponent, EmployeeViewComponent],
+  declarations: [EmployeeComponent],
+  exports: [EmployeeComponent],
   imports: [
     CommonModule,
     TableModule,
@@ -42,7 +41,7 @@ import { EmployeeRoutingModule } from './employee-routing.module';
     CalendarModule,
     FormsModule,
     ReactiveFormsModule,
-    EmployeeRoutingModule
+    EmployeeFormRoutingModule
   ]
 })
-export class EmployeeModule { }
+export class EmployeeFormModule { }

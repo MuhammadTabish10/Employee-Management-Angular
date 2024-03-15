@@ -11,5 +11,5 @@ export interface Employee {
     hireDate: string;
     status: boolean;
     jobTitle: JobTitle;
-    department: Department;
+    department: Department; 
 } 
