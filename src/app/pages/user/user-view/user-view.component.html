@@ -1,0 +1,24 @@
+<div class="m-5 form-container">
+    <div class="card">
+        <div class="flex justify-content-between ">
+            <h1 class="heading">User Details</h1>
+        </div>
+        <div class="p-fluid  grid">
+            <div class="field col-12 md:col-6">
+                <label htmlFor="name"><strong>Name</strong></label>
+                <input pInputTextarea id="name" rows="4"  [ngModel]="user.name" readonly/>
+            </div>
+            <div class="field col-12 md:col-6">
+                <label htmlFor="email"><strong>Email</strong></label>
+                <input pInputTextarea id="email" rows="4"  [ngModel]="user.email" readonly/>
+            </div>
+            <div class="field col-12 md:col-6">
+                <label htmlFor="role"><strong>Role</strong></label>
+                <input pInputTextarea id="role" rows="4"  [ngModel]="user.roles[0].name" readonly/>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<p-toast [breakpoints]="{'920px': {width: '100%', right: '0', left: '0'}}"></p-toast>

@@ -6,14 +6,10 @@ import { PaginatorModule } from "primeng/paginator";
 import { ToastModule } from "primeng/toast";
 import { RippleModule } from "primeng/ripple";
 import { ButtonModule } from 'primeng/button';
-import { InputMaskModule } from 'primeng/inputmask';
-import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DialogModule } from "primeng/dialog";
 import { DropdownModule } from "primeng/dropdown";
-import { ProgressBarModule } from "primeng/progressbar";
-import { CalendarModule } from "primeng/calendar";
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -23,7 +19,6 @@ import { EmployeeRoutingModule } from './employee-routing.module';
 
 @NgModule({
   declarations: [EmployeeListComponent, EmployeeViewComponent],
-  exports: [EmployeeListComponent, EmployeeViewComponent],
   imports: [
     CommonModule,
     TableModule,
@@ -33,13 +28,9 @@ import { EmployeeRoutingModule } from './employee-routing.module';
     ToastModule,
     RippleModule,
     ButtonModule,
-    InputMaskModule,
     InputTextModule,
-    InputNumberModule,
     DialogModule,
-    ProgressBarModule,
     DropdownModule,
-    CalendarModule,
     FormsModule,
     ReactiveFormsModule,
     EmployeeRoutingModule

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
@@ -9,10 +9,9 @@ import { JobTitleService } from '../../../core/services/job-title.service';
 import { DepartmentService } from '../../../core/services/department.service';
 import { JobTitle } from '../../../core/models/jobTitle.model';
 import { Department } from '../../../core/models/department.model';
-import { Helper } from '../../../shared/utilities/helper';
 import { ROUTES } from '../../../shared/constants/routes.constants';
 import { formatDate } from '@angular/common';
-
+ 
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',

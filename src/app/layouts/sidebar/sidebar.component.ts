@@ -21,4 +21,9 @@ export class SidebarComponent {
     this.router.navigateByUrl(ROUTES.EMPLOYEE_LIST);
     this.sidebarVisible = false;
   }
+
+  navigateToUserList() {
+    this.router.navigateByUrl(ROUTES.USER_LIST);
+    this.sidebarVisible = false;
+  }
 }

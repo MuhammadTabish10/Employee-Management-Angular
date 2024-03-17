@@ -29,4 +29,16 @@ export const API_ENDPOINTS = {
     DELETE_JOB_TITLE_BY_ID_URL: `${environment.baseUrl}/job-title/`,
     UPDATE_JOB_TITLE_BY_ID_URL: `${environment.baseUrl}/job-title/`,
     UPDATE_JOB_TITLE_STATUS_TO_ACTIVE_URL: `${environment.baseUrl}/job-title/`,
+
+    GET_ALL_USER_URL: `${environment.baseUrl}/user/status/`,
+    ADD_USER_URL: `${environment.baseUrl}/signup`,
+    GET_USER_BY_ID_URL: `${environment.baseUrl}/user/`,
+    DELETE_USER_BY_ID_URL: `${environment.baseUrl}/user/`,
+    UPDATE_USER_BY_ID_URL: `${environment.baseUrl}/user/`,
+    UPDATE_USER_STATUS_TO_ACTIVE_URL: `${environment.baseUrl}/user/`,
+
+    GET_ALL_ROLE_URL: `${environment.baseUrl}/role`,
+    ADD_ROLE_URL: `${environment.baseUrl}/role`,
+    GET_ROLE_BY_ID_URL: `${environment.baseUrl}/role/`,
+    UPDATE_ROLE_BY_ID_URL: `${environment.baseUrl}/role/`,
   };

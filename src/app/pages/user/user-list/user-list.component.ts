@@ -3,37 +3,37 @@ import { Table } from 'primeng/table';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
-import { EmployeeService } from '../../../core/services/employee.service';
-import { Employee } from '../../../core/models/employee.model';
 import { finalize } from 'rxjs';
 import { ROUTES } from '../../../shared/constants/routes.constants';
+import { User } from '../../../core/models/user.model';
+import { UserService } from '../../../core/services/user.service';
 
 @Component({
-  selector: 'app-employee-list',
-  templateUrl: './employee-list.component.html',
-  styleUrl: './employee-list.component.css',
+  selector: 'app-user-list',
+  templateUrl: './user-list.component.html',
+  styleUrl: './user-list.component.css',
   providers: [MessageService]
 })
-export class EmployeeListComponent {
+export class UserListComponent {
   @ViewChild('filter') filter!: ElementRef;
-  employeeList: Employee[] = [];
+  userList: User[] = [];
   loading: any;
   status: ['Active', 'InActive'] | undefined;
   selectedStatus: string = 'Active';
   activeStatus: boolean = true;
   deleteId!: number;
-  deleteEmployeeDialog: any;
+  deleteUserDialog: any;
   refresh: boolean = true;
   visible: boolean = false;
 
   constructor(
-    private employeeService: EmployeeService,
+    private userService: UserService,
     private messageService: MessageService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.getAllEmployees();
+    this.getAllUsers();
   }
 
   options: SelectItem[] = [
@@ -41,16 +41,16 @@ export class EmployeeListComponent {
     { label: 'InActive', value: 'InActive' },
   ];
 
-  getAllEmployees() {
-    this.employeeService
-      .getAllEmployees(this.activeStatus)
+  getAllUsers() {
+    this.userService
+      .getAllUsers(this.activeStatus)
       .pipe(finalize(() => (this.refresh = false)))
-      .subscribe((employeeList) => (this.employeeList = employeeList));
+      .subscribe((userList) => (this.userList = userList));
   }
 
   onRefresh() {
     this.refresh = true;
-    this.getAllEmployees();
+    this.getAllUsers();
   }
 
   //   For table filtering purpose
@@ -61,10 +61,10 @@ export class EmployeeListComponent {
   onStatusChange(data: string) {
     if (data == 'Active') {
       this.activeStatus = true;
-      this.getAllEmployees();
+      this.getAllUsers();
     } else {
       this.activeStatus = false;
-      this.getAllEmployees();
+      this.getAllUsers();
     }
   }
 
@@ -74,35 +74,35 @@ export class EmployeeListComponent {
   }
 
   confirmDeleteSelected() {
-    this.employeeService.deleteEmployeeById(this.deleteId).subscribe(() => {
+    this.userService.deleteUserById(this.deleteId).subscribe(() => {
       this.alert();
-      this.getAllEmployees();
-      this.deleteEmployeeDialog = false;
+      this.getAllUsers();
+      this.deleteUserDialog = false;
     });
   }
 
-  onDeleteEmployee(id: number) {
+  onDeleteUser(id: number) {
     this.deleteId = id;
-    this.deleteEmployeeDialog = true;
+    this.deleteUserDialog = true;
   }
 
-  onActiveEmployee(id: number) {
-    this.employeeService.setEmployeeStatusToActiveById(id).subscribe(() => {
+  onActiveUser(id: number) {
+    this.userService.setUserStatusToActiveById(id).subscribe(() => {
       this.success();
       this.selectedStatus = 'Active';
       this.onStatusChange(this.selectedStatus);
     });
   }
 
-  onEditEmployee(id: number) {
+  onEditUser(id: number) {
     const queryParams = { updateMode: 'true', id: id };
-    this.router.navigate([ROUTES.EMPLOYEE], {
+    this.router.navigate([ROUTES.USER], {
       queryParams: queryParams,
     });
   }
 
-  navigateToCreateEmployee() {
-    this.router.navigateByUrl(ROUTES.EMPLOYEE);
+  navigateToCreateUser() {
+    this.router.navigateByUrl(ROUTES.USER);
   }
 
   success() {
@@ -120,4 +120,4 @@ export class EmployeeListComponent {
       detail: 'Deactivation Successfull',
     });
   }
-}
+}  

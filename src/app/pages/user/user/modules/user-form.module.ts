@@ -10,12 +10,12 @@ import { DropdownModule } from "primeng/dropdown";
 import { CalendarModule } from "primeng/calendar";
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { EmployeeFormRoutingModule } from './employee-form-routing.module';
-import { EmployeeComponent } from '../employee.component';
+import { UserComponent } from '../user.component';
+import { UserFormRoutingModule } from './user-form-routing.module';
 
 
 @NgModule({
-  declarations: [EmployeeComponent],
+  declarations: [UserComponent],
   imports: [
     CommonModule,
     InputTextareaModule,
@@ -28,7 +28,7 @@ import { EmployeeComponent } from '../employee.component';
     CalendarModule,
     FormsModule,
     ReactiveFormsModule,
-    EmployeeFormRoutingModule
+    UserFormRoutingModule
   ]
 })
-export class EmployeeFormModule { }
+export class UserFormModule { }
