@@ -1,0 +1,50 @@
+.user-container{
+    margin: 30px;
+}
+
+.heading{
+    font-weight: 950;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-thead > tr > th {
+    background: #2B2D42;
+    color: white;
+}
+
+.heading{
+    color: #2B2D42; font-size: 23px; font-weight: 700;
+}
+
+.addBtn{
+    background-color: #2B2D42;
+    color: #fff;
+}
+
+.addBtn:hover{
+    background-color: #414463;
+}
+
+@media screen and (max-width: 576px) {
+    .addBtn {
+      margin-top: 20px;
+    }
+  }
+
+  .custom-button {
+    color: #2B2D42 ;
+    border-color: #2B2D42; 
+}
+
+::ng-deep .custom-dropdown{
+    border-color: #2B2D42;
+    font-weight: 700;
+}
+
+:host ::ng-deep .p-dropdown .p-dropdown-label   {
+    color: #2B2D42 ;
+}
+
+
+:host ::ng-deep .p-dropdown .p-dropdown-trigger {
+    color: #2B2D42 ;
+}

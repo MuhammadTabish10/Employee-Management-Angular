@@ -13,12 +13,12 @@ import { DropdownModule } from "primeng/dropdown";
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { UserRoutingModule } from './user-routing.module';
-import { UserListComponent } from './user-list/user-list.component';
-import { UserViewComponent } from './user-view/user-view.component';
+import { JobTitleRoutingModule } from './job-title-routing.module';
+import { JobTitleListComponent } from './job-title-list/job-title-list.component';
+
 
 @NgModule({
-  declarations: [UserListComponent, UserViewComponent],
+  declarations: [JobTitleListComponent],
   imports: [
     CommonModule,
     TableModule,
@@ -33,7 +33,7 @@ import { UserViewComponent } from './user-view/user-view.component';
     DropdownModule,
     FormsModule,
     ReactiveFormsModule,
-    UserRoutingModule
+    JobTitleRoutingModule
   ]
 })
-export class UserModule { }
+export class JobTitleModule { }

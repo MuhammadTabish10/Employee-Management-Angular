@@ -44,6 +44,20 @@ const routes: Routes = [
             (m) => m.UserFormModule
           ),
       },
+      {
+        path: ROUTES.JOB_TITLE_LIST,
+        loadChildren: () =>
+          import("./pages/job-title/job-title.module").then(
+            (m) => m.JobTitleModule
+          ),
+      },
+      {
+        path: ROUTES.JOB_TITLE,
+        loadChildren: () =>
+          import("./pages/job-title/job-title/job-title/modules/job-title-form.module").then(
+            (m) => m.JobTitleFormModule
+          ),
+      },
     ],
   },
   { path: ROUTES.LOGIN, component: LoginComponent },

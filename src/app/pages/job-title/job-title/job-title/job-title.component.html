@@ -1,0 +1,23 @@
+<div class="m-5 form-container">
+    <h1 class="mb-5 heading">
+        {{ mode == "Add" ? "Add JobTitle" : "Update JobTitle" }}
+    </h1>
+    <form action="" [formGroup]="jobTitleForm" (ngSubmit)="onSubmit()">
+        <div class="p-fluid p-formgrid grid">
+            <div class="field col-12 md:col-6">
+                <label htmlFor="title"><strong>Title</strong></label>
+                <input pInputTextarea id="title" rows="4" formControlName="title" placeholder="Enter Title"
+                    [ngClass]="{'ng-dirty':jobTitleForm.get('title')?.touched && jobTitleForm.get('title')?.invalid}" />
+                <small *ngIf="!jobTitleForm.get('title')?.valid && jobTitleForm.get('title')?.touched" class="text-red-500">
+                    Required
+                </small>
+            </div>
+            <div class="flex justify-content-end w-full">
+                <button pButton label="Cancel" type="button" class="mx-3 editBtn" style="background-color: rgb(138, 136, 136); border: 1px solid rgb(138, 136, 136);"
+                    *ngIf="mode == 'Update'" (click)="onCancel()"></button>
+                <button pButton label="Submit" type="Submit"  class="mx-3 submit-btn" style="width: 150px;"></button>
+            </div>
+        </div>
+    </form>
+</div>
+<p-toast [breakpoints]="{'920px': {width: '100%', right: '0', left: '0'}}"></p-toast>

@@ -1,8 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TableModule } from 'primeng/table';
-import { TooltipModule } from "primeng/tooltip";
-import { PaginatorModule } from "primeng/paginator";
 import { ToastModule } from "primeng/toast";
 import { RippleModule } from "primeng/ripple";
 import { ButtonModule } from 'primeng/button';
@@ -10,20 +7,16 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DialogModule } from "primeng/dialog";
 import { DropdownModule } from "primeng/dropdown";
+import { CalendarModule } from "primeng/calendar";
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-
-import { UserRoutingModule } from './user-routing.module';
-import { UserListComponent } from './user-list/user-list.component';
-import { UserViewComponent } from './user-view/user-view.component';
+import { JobTitleComponent } from '../job-title.component';
+import { JobTitleFormRoutingModule } from './job-title-form-routing.module';
 
 @NgModule({
-  declarations: [UserListComponent, UserViewComponent],
+  declarations: [JobTitleComponent],
   imports: [
     CommonModule,
-    TableModule,
-    TooltipModule,
-    PaginatorModule,
     InputTextareaModule,
     ToastModule,
     RippleModule,
@@ -31,9 +24,10 @@ import { UserViewComponent } from './user-view/user-view.component';
     InputTextModule,
     DialogModule,
     DropdownModule,
+    CalendarModule,
     FormsModule,
     ReactiveFormsModule,
-    UserRoutingModule
+    JobTitleFormRoutingModule
   ]
 })
-export class UserModule { }
+export class JobTitleFormModule { }

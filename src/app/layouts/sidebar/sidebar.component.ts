@@ -26,4 +26,14 @@ export class SidebarComponent {
     this.router.navigateByUrl(ROUTES.USER_LIST);
     this.sidebarVisible = false;
   }
+
+  navigateToJobTitleList() {
+    this.router.navigateByUrl(ROUTES.JOB_TITLE_LIST);
+    this.sidebarVisible = false;
+  }
+
+  navigateToDepartmentList() {
+    this.router.navigateByUrl(ROUTES.DEPARTMENT_LIST);
+    this.sidebarVisible = false;
+  }
 }
