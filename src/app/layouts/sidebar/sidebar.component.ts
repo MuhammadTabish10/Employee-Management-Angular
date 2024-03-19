@@ -36,4 +36,14 @@ export class SidebarComponent {
     this.router.navigateByUrl(ROUTES.DEPARTMENT_LIST);
     this.sidebarVisible = false;
   }
+
+  navigateToAttendanceList() {
+    this.router.navigateByUrl(ROUTES.ATTENDANCE_LIST);
+    this.sidebarVisible = false;
+  }
+
+  navigateToSalaryList() {
+    this.router.navigateByUrl(ROUTES.SALARY_LIST);
+    this.sidebarVisible = false;
+  }
 }

@@ -8,5 +8,5 @@ export interface Attendance {
     timeOut: string;
     status: boolean;
     attendanceStatus: AttendanceStatus;
-    employee: Employee;
+    employee: Employee; 
 }

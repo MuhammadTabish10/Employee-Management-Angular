@@ -1,0 +1,23 @@
+.heading {
+    color: #2B2D42;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  
+  .p-inputtext:enabled:focus,
+  input:focus,
+  input:focus-visible {
+    box-shadow: none !important;
+    border-color: #ced4da !important;
+  }
+  
+  .p-inputtext:hover,
+  input:hover {
+    border-color: #ced4da !important;
+  }
+  
+  .form-container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+  }

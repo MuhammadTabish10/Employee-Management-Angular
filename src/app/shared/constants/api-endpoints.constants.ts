@@ -41,4 +41,18 @@ export const API_ENDPOINTS = {
     ADD_ROLE_URL: `${environment.baseUrl}/role`,
     GET_ROLE_BY_ID_URL: `${environment.baseUrl}/role/`,
     UPDATE_ROLE_BY_ID_URL: `${environment.baseUrl}/role/`,
+
+    GET_ALL_ATTENDANCE_URL: `${environment.baseUrl}/attendance/status/`,
+    ADD_ATTENDANCE_URL: `${environment.baseUrl}/attendance`,
+    GET_ATTENDANCE_BY_ID_URL: `${environment.baseUrl}/attendance/`,
+    DELETE_ATTENDANCE_BY_ID_URL: `${environment.baseUrl}/attendance/`,
+    UPDATE_ATTENDANCE_BY_ID_URL: `${environment.baseUrl}/attendance/`,
+    UPDATE_ATTENDANCE_STATUS_TO_ACTIVE_URL: `${environment.baseUrl}/attendance/`,
+
+    GET_ALL_SALARY_URL: `${environment.baseUrl}/salary/status/`,
+    ADD_SALARY_URL: `${environment.baseUrl}/salary`,
+    GET_SALARY_BY_ID_URL: `${environment.baseUrl}/salary/`,
+    DELETE_SALARY_BY_ID_URL: `${environment.baseUrl}/salary/`,
+    UPDATE_SALARY_BY_ID_URL: `${environment.baseUrl}/salary/`,
+    UPDATE_SALARY_STATUS_TO_ACTIVE_URL: `${environment.baseUrl}/salary/`,
   };

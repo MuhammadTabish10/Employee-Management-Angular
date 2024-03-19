@@ -1,26 +1,26 @@
-import { Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { HttpErrorResponse } from '@angular/common/http';
-import { JobTitle } from '../../../../core/models/jobTitle.model';
-import { JobTitleService } from '../../../../core/services/job-title.service';
-import { ROUTES } from '../../../../shared/constants/routes.constants';
+import { ROUTES } from '../../../shared/constants/routes.constants';
+import { Department } from '../../../core/models/department.model';
+import { DepartmentService } from '../../../core/services/department.service';
 
 @Component({
-  selector: 'app-job-title',
-  templateUrl: './job-title.component.html',
-  styleUrl: './job-title.component.css',
+  selector: 'app-department',
+  templateUrl: './department.component.html',
+  styleUrl: './department.component.css',
   providers: [MessageService]
 })
-export class JobTitleComponent {
-  jobTitleForm!: FormGroup;
+export class DepartmentComponent {
+  departmentForm!: FormGroup;
   mode: string = 'Add';
-  jobTitle!: JobTitle;
-  jobTitleId: any;
+  department!: Department;
+  departmentId: any;
 
   constructor(
-    private jobTitleService: JobTitleService,
+    private departmentService: DepartmentService,
     private router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder,
@@ -28,67 +28,67 @@ export class JobTitleComponent {
   ) {}
 
   ngOnInit(): void {
-    this.jobTitleForm = this.fb.group({
-      title: [null, Validators.required],
+    this.departmentForm = this.fb.group({
+      name: [null, Validators.required],
     });
 
     this.route.queryParams.subscribe((params) => {
-      this.jobTitleId = params['id'];
-      if (this.jobTitleId) {
+      this.departmentId = params['id'];
+      if (this.departmentId) {
         this.mode = 'Update';
-        this.updateForm(this.jobTitleId);
+        this.updateForm(this.departmentId);
       }
     });
   }
 
   patchFormWithData() {
-    this.jobTitleForm.patchValue({
-      title: this.jobTitle.title,
+    this.departmentForm.patchValue({
+      name: this.department.name
     });
   }
 
-  getJobTitleById(id?: any) {
-    this.jobTitleService.getJobTitleById(id).subscribe((res) => {
+  getDepartmentById(id?: any) {
+    this.departmentService.getDepartmentById(id).subscribe((res) => {
       if (res) {
-        this.jobTitle = res;
+        this.department = res;
         this.patchFormWithData();
       }
     });
   }
 
   createFromForm() {
-    const formValue = this.jobTitleForm.value;
-    const jobTitle: JobTitle = {
-      id: this.jobTitleId ? this.jobTitleId : undefined,
-      title: formValue.title,
+    const formValue = this.departmentForm.value;
+    const department: Department = {
+      id: this.departmentId,
+      name: formValue.name,
       status: true,
     };
-    return jobTitle;
+    return department;
   }
 
   updateForm(id?: any) {
-    this.getJobTitleById(id);
+    this.getDepartmentById(id);
   }
 
   onSubmit() {
-    if (this.jobTitleForm && this.jobTitleForm.valid) {
-      this.jobTitle = this.createFromForm();
+    if (this.departmentForm && this.departmentForm.valid) {
+      this.department = this.createFromForm();
       if (this.mode == 'Update') {
-        this.jobTitleService
-          .updateJobTitleById(this.jobTitle.id, this.jobTitle)
+        this.departmentService
+          .updateDepartmentById(this.department.id, this.department)
           .subscribe({
             next: (res: any) => {
-              this.router.navigate([ROUTES.JOB_TITLE_LIST]);
+              this.router.navigate([ROUTES.DEPARTMENT_LIST]);
             },
             error: (error) => {
               this.error(error);
             },
           });
       } else {
-        this.jobTitleService.addJobTitle(this.jobTitle).subscribe({
+        this.departmentService.addDepartment(this.department).subscribe({
           next: (res: any) => {
             if (res) {
-              this.router.navigate([ROUTES.JOB_TITLE_LIST]);
+              this.router.navigate([ROUTES.DEPARTMENT_LIST]);
             }
           },
           error: (error) => {
@@ -132,6 +132,6 @@ export class JobTitleComponent {
   }
 
   onCancel() {
-    this.router.navigate([ROUTES.JOB_TITLE_LIST]);
+    this.router.navigate([ROUTES.DEPARTMENT_LIST]);
   }
 }

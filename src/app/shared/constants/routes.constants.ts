@@ -11,6 +11,12 @@ export const ROUTES = {
     JOB_TITLE: 'job-title',
     DEPARTMENT_LIST: 'department/list',
     DEPARTMENT: 'department',
+    ATTENDANCE_LIST: 'attendance/list',
+    ATTENDANCE: 'attendance',
+    ATTENDANCE_VIEW: 'attendance/view',
+    SALARY_LIST: 'salary/list',
+    SALARY: 'salary',
+    SALARY_VIEW: 'salary/view',
     PAGE_NOT_FOUND: '404'
   };
   

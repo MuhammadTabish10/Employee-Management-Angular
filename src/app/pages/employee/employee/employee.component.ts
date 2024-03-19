@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Employee } from '../../../core/models/employee.model';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { EmployeeService } from '../../../core/services/employee.service';
 import { JobTitleService } from '../../../core/services/job-title.service';
 import { DepartmentService } from '../../../core/services/department.service';
@@ -32,7 +32,6 @@ export class EmployeeComponent implements OnInit {
     private jobTitleService: JobTitleService,
     private router: Router,
     private route: ActivatedRoute,
-    private http: HttpClient,
     private fb: FormBuilder,
     private messageService: MessageService
   ) {}
@@ -100,7 +99,7 @@ export class EmployeeComponent implements OnInit {
   createFromForm() {
     const formValue = this.employeeForm.value;
     const employee: Employee = {
-      id: this.employeeId ? this.employeeId : undefined,
+      id: this.employeeId,
       firstName: formValue.firstName,
       lastName: formValue.lastName,
       phoneNumber: formValue.phoneNumber,
@@ -114,7 +113,7 @@ export class EmployeeComponent implements OnInit {
     return employee;
   }
 
-  updateForm(id?: any) {
+  updateForm(id: any) {
     this.getEmployeeById(id);
   }
 
@@ -149,14 +148,6 @@ export class EmployeeComponent implements OnInit {
       this.alert();
     }
   }
-
-  // error(error: any) {
-  //   this.messageService.add({
-  //     severity: 'error',
-  //     summary: 'Warning',
-  //     detail: error.error.error,
-  //   });
-  // }
 
   error(error: HttpErrorResponse) {
     if (error.error) {

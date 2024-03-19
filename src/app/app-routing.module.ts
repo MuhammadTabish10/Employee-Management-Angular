@@ -58,6 +58,34 @@ const routes: Routes = [
             (m) => m.JobTitleFormModule
           ),
       },
+      {
+        path: ROUTES.DEPARTMENT_LIST,
+        loadChildren: () =>
+          import("./pages/department/department.module").then(
+            (m) => m.DepartmentModule
+          ),
+      },
+      {
+        path: ROUTES.DEPARTMENT,
+        loadChildren: () =>
+          import("./pages/department/department/modules/department-form.module").then(
+            (m) => m.DepartmentFormModule
+          ),
+      },
+      {
+        path: ROUTES.ATTENDANCE_LIST,
+        loadChildren: () =>
+          import("./pages/attendance/attendance.module").then(
+            (m) => m.AttendanceModule
+          ),
+      },
+      {
+        path: ROUTES.ATTENDANCE,
+        loadChildren: () =>
+          import("./pages/attendance/attendance/modules/attendance-form.module").then(
+            (m) => m.AttendanceFormModule
+          ),
+      },
     ],
   },
   { path: ROUTES.LOGIN, component: LoginComponent },

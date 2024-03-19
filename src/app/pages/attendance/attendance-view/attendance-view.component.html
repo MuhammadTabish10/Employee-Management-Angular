@@ -1,0 +1,32 @@
+<div class="m-5 form-container">
+    <div class="card">
+        <div class="flex justify-content-between ">
+            <h1 class="heading">Attendance Details</h1>
+        </div>
+        <div class="p-fluid  grid">
+            <div class="field col-12 md:col-6">
+                <label htmlFor="name"><strong>Name</strong></label>
+                <input pInputTextarea id="Name" rows="4"  [ngModel]="attendance.employee.firstName + ' ' + attendance.employee.lastName" readonly/>
+            </div>
+            <div class="field col-12 md:col-6">
+                <label htmlFor="date"><strong>Date</strong></label> 
+                <input pInputTextarea id="date" rows="4"  [ngModel]="attendance.date" readonly/>
+            </div>
+            <div class="field col-12 md:col-6">
+                <label htmlFor="timeIn"><strong>TimeIn</strong></label>
+                <input pInputTextarea id="timeIn" rows="4"  [ngModel]="attendance.timeIn" readonly/>
+            </div>
+            <div class="field col-12 md:col-6">
+                <label htmlFor="timeOut"><strong>TimeOut</strong></label>
+                <input pInputTextarea id="timeIn" rows="4"  [ngModel]="attendance.timeOut" readonly/>
+            </div>
+            <div class="field col-12 md:col-6">
+                <label htmlFor="attendanceStatus"><strong>Status</strong></label>
+                <input pInputTextarea id="attendanceStatus" rows="4"  [ngModel]="attendance.attendanceStatus" readonly/>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<p-toast [breakpoints]="{'920px': {width: '100%', right: '0', left: '0'}}"></p-toast>
