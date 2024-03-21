@@ -1,1 +1,65 @@
-<p>attendance works!</p>
+<div class="m-5 form-container">
+    <h1 class="mb-5 heading">
+        {{ mode == "Add" ? "Add Attendance" : "Update Attendance" }}
+    </h1>
+    <form action="" [formGroup]="attendanceForm" (ngSubmit)="onSubmit()">
+        <div class="p-fluid p-formgrid grid">
+                <div class="field col-12 md:col-6">
+                    <label htmlFor="date">Date</label>
+                    <p-calendar dateFormat="yy-mm-dd" [showIcon]="true" formControlName="date"
+                        placeholder="Select Date"
+                        [ngClass]="{'ng-dirty':attendanceForm.get('date')?.touched && attendanceForm.get('date')?.invalid}"></p-calendar>
+                    <small *ngIf="!attendanceForm.get('date')?.valid && attendanceForm.get('date')?.touched"
+                        class="text-red-500">
+                        Required
+                    </small>
+                </div>
+                <div class="field col-12 md:col-6">
+                    <label htmlFor="timeIn">TimeIn</label>
+                    <p-calendar [hourFormat]="'24'" [timeOnly]="true" formControlName="timeIn" [showSeconds]="true"
+                        [ngClass]="{'ng-dirty':attendanceForm.get('timeIn')?.touched && attendanceForm.get('timeIn')?.invalid}"
+                        placeholder="Select TimeIn" [required]="true"></p-calendar>
+                    <small *ngIf="!attendanceForm.get('timeIn')?.valid && attendanceForm.get('timeIn')?.touched"
+                        class="text-red-500">
+                        Required
+                    </small>
+                </div>
+                <div class="field col-12 md:col-6">
+                    <label htmlFor="timeOut">TimeOut</label>
+                    <p-calendar [hourFormat]="'24'" [timeOnly]="true" formControlName="timeOut" [showSeconds]="true"
+                        [ngClass]="{'ng-dirty':attendanceForm.get('timeOut')?.touched && attendanceForm.get('timeOut')?.invalid}"
+                        placeholder="Select TimeOut" [required]="true"></p-calendar>
+                    <small *ngIf="!attendanceForm.get('timeOut')?.valid && attendanceForm.get('timeOut')?.touched"
+                        class="text-red-500">
+                        Required
+                    </small>
+                </div>
+                <div class="field col-12 md:col-6">
+                    <label><strong>Status</strong></label>
+                    <p-dropdown [options]="attendanceStatusOptions" formControlName="attendanceStatus" placeholder="Select Attendance Status"
+                        [ngClass]="{'ng-dirty':attendanceForm.get('attendanceStatus')?.touched && attendanceForm.get('attendanceStatus')?.invalid}"
+                    ></p-dropdown>
+                    <small *ngIf="!attendanceForm.get('attendanceStatus')?.valid && attendanceForm.get('attendanceStatus')?.touched" class="text-red-500">
+                        Required
+                    </small>
+                </div>
+                <div class="field col-12 md:col-6">
+                    <label><strong>Employee</strong></label>
+                    <p-dropdown [options]="employees" formControlName="employee" placeholder="Select Employee"
+                        optionLabel="firstName"
+                        [ngClass]="{'ng-dirty': attendanceForm.get('employee')?.touched && attendanceForm.get('employee')?.invalid}">
+                    </p-dropdown>
+                    <small *ngIf="!attendanceForm.get('employee')?.valid && attendanceForm.get('employee')?.touched"
+                        class="text-red-500">
+                        Required
+                    </small>
+                </div>                
+            </div>
+            <div class="flex justify-content-end w-full">
+                <button pButton label="Cancel" type="button" class="mx-3 editBtn" style="background-color: rgb(138, 136, 136); border: 1px solid rgb(138, 136, 136);"
+                    *ngIf="mode == 'Update'" (click)="onCancel()"></button>
+                <button pButton label="Submit" type="Submit"  class="mx-3 submit-btn" style="width: 150px;"></button>
+            </div>
+    </form>
+</div>
+<p-toast [breakpoints]="{'920px': {width: '100%', right: '0', left: '0'}}"></p-toast>

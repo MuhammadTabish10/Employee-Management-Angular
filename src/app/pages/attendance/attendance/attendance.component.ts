@@ -1,31 +1,29 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Employee } from '../../../core/models/employee.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { EmployeeService } from '../../../core/services/employee.service';
-import { JobTitleService } from '../../../core/services/job-title.service';
-import { DepartmentService } from '../../../core/services/department.service';
-import { JobTitle } from '../../../core/models/jobTitle.model';
-import { Department } from '../../../core/models/department.model';
 import { ROUTES } from '../../../shared/constants/routes.constants';
 import { formatDate } from '@angular/common';
 import { Attendance } from '../../../core/models/attendance.model';
 import { AttendanceService } from '../../../core/services/attendance.service';
- 
+import { AttendanceStatus } from '../../../shared/enums/attendanceStatus.enum';
 
 @Component({
   selector: 'app-attendance',
   templateUrl: './attendance.component.html',
   styleUrl: './attendance.component.css',
-  providers: [MessageService]
+  providers: [MessageService, DatePipe]
 })
-export class AttendanceComponent {
+export class AttendanceComponent implements OnInit{
   attendanceForm!: FormGroup;
   mode: string = 'Add';
   attendance!: Attendance;
   employees: Employee[] = [];
+  attendanceStatusOptions = Object.values(AttendanceStatus);
   attendanceId: any;
 
   constructor(
@@ -34,6 +32,7 @@ export class AttendanceComponent {
     private router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder,
+    private datePipe: DatePipe,
     private messageService: MessageService
   ) {}
 
@@ -69,9 +68,10 @@ export class AttendanceComponent {
 
   getAllEmployees() {
     this.employeeService.getAllEmployees(true).subscribe((res: Employee[]) => {
-      this.employees = res;
+      this.employees = res
     });
   }
+  
 
   getAttendanceById(id?: any) {
     this.attendanceService.getAttendanceById(id).subscribe((res) => {
@@ -84,13 +84,16 @@ export class AttendanceComponent {
 
   createFromForm() {
     const formValue = this.attendanceForm.value;
+    const timeInFormatted = formValue.timeIn !== null ? this.datePipe.transform(formValue.timeIn, 'HH:mm:ss')! : '';
+    const timeOutFormatted = formValue.timeOut !== null ? this.datePipe.transform(formValue.timeOut, 'HH:mm:ss')! : '';
+    
     const attendance: Attendance = {
       id: this.attendanceId,
       date: formatDate(formValue.date, 'yyyy-MM-dd', 'en-US'),
-      timeIn: formValue.timeIn,
-      timeOut: formValue.timeOut,
+      timeIn: timeInFormatted,
+      timeOut: timeOutFormatted,
       attendanceStatus: formValue.attendanceStatus,
-      employee: formValue.employee,
+      employee: formValue.employee.value,
       status: true,
     };
     return attendance;
