@@ -7,12 +7,15 @@ import { EmployeeService } from '../../../core/services/employee.service';
 import { Employee } from '../../../core/models/employee.model';
 import { finalize } from 'rxjs';
 import { ROUTES } from '../../../shared/constants/routes.constants';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common';
+import { error } from 'console';
 
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
   styleUrl: './employee-list.component.css',
-  providers: [MessageService]
+  providers: [MessageService, DatePipe]
 })
 export class EmployeeListComponent {
   @ViewChild('filter') filter!: ElementRef;
@@ -21,20 +24,28 @@ export class EmployeeListComponent {
   status: ['Active', 'InActive'] | undefined;
   selectedStatus: string = 'Active';
   activeStatus: boolean = true;
-  deleteId!: number;
+  id!: number;
   deleteEmployeeDialog: any;
   refresh: boolean = true;
   visible: boolean = false;
+  excelDataForm!: FormGroup;
 
   constructor(
     private employeeService: EmployeeService,
     private messageService: MessageService,
+    private datePipe: DatePipe,
     private router: Router
   ) {}
 
   ngOnInit() {
+    this.excelDataForm = new FormGroup({
+      toDate: new FormControl(null, Validators.required),
+      fromDate: new FormControl(null, Validators.required),
+    });
     this.getAllEmployees();
   }
+
+
 
   options: SelectItem[] = [
     { label: 'Active', value: 'Active' },
@@ -74,7 +85,7 @@ export class EmployeeListComponent {
   }
 
   confirmDeleteSelected() {
-    this.employeeService.deleteEmployeeById(this.deleteId).subscribe(() => {
+    this.employeeService.deleteEmployeeById(this.id).subscribe(() => {
       this.alert();
       this.getAllEmployees();
       this.deleteEmployeeDialog = false;
@@ -82,7 +93,7 @@ export class EmployeeListComponent {
   }
 
   onDeleteEmployee(id: number) {
-    this.deleteId = id;
+    this.id = id;
     this.deleteEmployeeDialog = true;
   }
 
@@ -105,6 +116,52 @@ export class EmployeeListComponent {
     this.router.navigateByUrl(ROUTES.EMPLOYEE);
   }
 
+  openExcelDialog(employeeId: number){
+    this.id = employeeId;
+    this.visible = true;
+  }
+
+  onDownloadExcel(data: any, id: number) {
+    if (this.excelDataForm.valid) {
+      const formattedDates = {
+        startDate: this.datePipe.transform(data.fromDate, "yyyy-MM-dd"),
+        endDate: this.datePipe.transform(data.toDate, "yyyy-MM-dd"),
+      };
+
+      this.employeeService
+        .getEmployeeExcel(id,formattedDates)
+        .subscribe({
+          next: (res: any) => {
+            this.employeeService.downloadExcelFile(
+              res,
+              `Employee_${formattedDates.startDate}_to_${formattedDates.endDate}.xlsx`
+            );
+            this.messageService.add({
+              severity: "success",
+              summary: "Success",
+              detail: "Download Successfull",
+            }),
+              this.excelDataForm.reset();
+            this.visible = false;
+          },
+          error: (error) => {
+            this.messageService.add({
+              severity: "error",
+              summary: "Error",
+              detail: "No Data Found",
+            });
+          }
+        })
+           
+    } else {
+      this.messageService.add({
+        severity: "error",
+        summary: "Error",
+        detail: "Please Fill All The Fields.",
+      });
+    }
+  }
+
   success() {
     this.messageService.add({
       severity: 'success',
@@ -119,5 +176,9 @@ export class EmployeeListComponent {
       summary: 'Success',
       detail: 'Deactivation Successfull',
     });
+  }
+
+  onCancel() {
+    this.visible = false;
   }
 }

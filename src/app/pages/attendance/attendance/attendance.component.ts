@@ -39,8 +39,8 @@ export class AttendanceComponent implements OnInit{
   ngOnInit(): void {
     this.attendanceForm = this.fb.group({
       date: [null, Validators.required],
-      timeIn: [null, Validators.required],
-      timeOut: [null, Validators.required],
+      timeIn: [null],
+      timeOut: [null],
       attendanceStatus: [null, Validators.required],
       employee: [null, Validators.required]
     });
@@ -84,18 +84,24 @@ export class AttendanceComponent implements OnInit{
 
   createFromForm() {
     const formValue = this.attendanceForm.value;
-    const timeInFormatted = formValue.timeIn !== null ? this.datePipe.transform(formValue.timeIn, 'HH:mm:ss')! : '';
-    const timeOutFormatted = formValue.timeOut !== null ? this.datePipe.transform(formValue.timeOut, 'HH:mm:ss')! : '';
     
-    const attendance: Attendance = {
+    let attendance: Attendance = {
       id: this.attendanceId,
       date: formatDate(formValue.date, 'yyyy-MM-dd', 'en-US'),
-      timeIn: timeInFormatted,
-      timeOut: timeOutFormatted,
       attendanceStatus: formValue.attendanceStatus,
-      employee: formValue.employee.value,
+      employee: formValue.employee,
       status: true,
     };
+  
+    if (formValue.timeIn !== null) {
+      const timeInFormatted = this.datePipe.transform(formValue.timeIn, 'HH:mm:ss');
+      attendance = { ...attendance, timeIn: timeInFormatted };
+    }
+  
+    if (formValue.timeOut !== null) {
+      const timeOutFormatted = this.datePipe.transform(formValue.timeOut, 'HH:mm:ss');
+      attendance = { ...attendance, timeOut: timeOutFormatted };
+    }
     return attendance;
   }
 
@@ -104,7 +110,7 @@ export class AttendanceComponent implements OnInit{
   }
 
   onSubmit() {
-    if (this.attendanceForm && this.attendanceForm.valid) {
+    if (this.attendanceForm.valid) {
       this.attendance = this.createFromForm();
       if (this.mode == 'Update') {
         this.attendanceService

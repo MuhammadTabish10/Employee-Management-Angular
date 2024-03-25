@@ -48,7 +48,7 @@
             </div>
             <div class="field col-12 md:col-6">
                 <label htmlFor="hireDate">Hire Date</label>
-                <p-calendar dateFormat="yy-mm-dd" [showIcon]="true" formControlName="hireDate"
+                <p-calendar dateFormat="yy-mm-dd" [showIcon]="true" formControlName="hireDate" 
                     placeholder="Select Hire Date"
                     [ngClass]="{'ng-dirty':employeeForm.get('hireDate')?.touched && employeeForm.get('hireDate')?.invalid}"></p-calendar>
                 <small *ngIf="!employeeForm.get('hireDate')?.valid && employeeForm.get('hireDate')?.touched"

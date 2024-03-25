@@ -17,22 +17,12 @@
                 <div class="field col-12 md:col-6">
                     <label htmlFor="timeIn">TimeIn</label>
                     <p-calendar [hourFormat]="'24'" [timeOnly]="true" formControlName="timeIn" [showSeconds]="true"
-                        [ngClass]="{'ng-dirty':attendanceForm.get('timeIn')?.touched && attendanceForm.get('timeIn')?.invalid}"
-                        placeholder="Select TimeIn" [required]="true"></p-calendar>
-                    <small *ngIf="!attendanceForm.get('timeIn')?.valid && attendanceForm.get('timeIn')?.touched"
-                        class="text-red-500">
-                        Required
-                    </small>
+                        placeholder="Select TimeIn"></p-calendar>
                 </div>
                 <div class="field col-12 md:col-6">
                     <label htmlFor="timeOut">TimeOut</label>
                     <p-calendar [hourFormat]="'24'" [timeOnly]="true" formControlName="timeOut" [showSeconds]="true"
-                        [ngClass]="{'ng-dirty':attendanceForm.get('timeOut')?.touched && attendanceForm.get('timeOut')?.invalid}"
-                        placeholder="Select TimeOut" [required]="true"></p-calendar>
-                    <small *ngIf="!attendanceForm.get('timeOut')?.valid && attendanceForm.get('timeOut')?.touched"
-                        class="text-red-500">
-                        Required
-                    </small>
+                        placeholder="Select TimeOut"></p-calendar>
                 </div>
                 <div class="field col-12 md:col-6">
                     <label><strong>Status</strong></label>

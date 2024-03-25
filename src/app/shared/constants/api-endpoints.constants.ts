@@ -8,6 +8,7 @@ export const API_ENDPOINTS = {
     USER_COUNT_URL: `${environment.baseUrl}/user/count`,
     EMPLOYEE_BY_STATUS_COUNT_URL: `${environment.baseUrl}/employee/status/count`,
     EMPLOYEE_BY_JOB_COUNT_URL: `${environment.baseUrl}/employee/job-title/count`,
+    EMPLOYEE_EXCEL_URL: `${environment.baseUrl}/employee/excel/`,
     
     GET_ALL_EMPLOYEE_URL: `${environment.baseUrl}/employee/status/`,
     ADD_EMPLOYEE_URL: `${environment.baseUrl}/employee`,

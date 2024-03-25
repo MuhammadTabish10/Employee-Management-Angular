@@ -48,3 +48,21 @@
 :host ::ng-deep .p-dropdown .p-dropdown-trigger {
     color: #2B2D42 ;
 }
+
+::ng-deep .p-calendar .p-button {
+    /* Add your custom color styles here */
+    background-color: #2B2D42;
+    border: #2B2D42;
+    color: white;
+}
+
+.submit-btn{
+    background-color: #2B2D42;
+    border: #2B2D42;
+}
+
+.cancel-btn {
+    border: 1px solid #2B2D42; 
+    color: #2B2D42;
+    background-color: white;
+}

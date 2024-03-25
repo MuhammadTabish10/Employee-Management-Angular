@@ -10,6 +10,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DialogModule } from "primeng/dialog";
 import { DropdownModule } from "primeng/dropdown";
+import { CalendarModule } from "primeng/calendar";
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -26,6 +27,7 @@ import { EmployeeRoutingModule } from './employee-routing.module';
     PaginatorModule,
     InputTextareaModule,
     ToastModule,
+    CalendarModule,
     RippleModule,
     ButtonModule,
     InputTextModule,

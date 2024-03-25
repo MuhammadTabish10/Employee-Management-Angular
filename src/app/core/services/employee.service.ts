@@ -45,4 +45,21 @@ export class EmployeeService {
       employee
     );
   }
+
+  getEmployeeExcel(id: number, params: any){
+    return this.http.get(
+      `${API_ENDPOINTS.EMPLOYEE_EXCEL_URL}${id}`,{
+        params,
+        responseType: "blob" as "json"
+      }
+    )
+  }
+
+  downloadExcelFile(data: any, filename: string) {
+    const blob = new Blob([data], { type: "application/xlsx" });
+    const link = document.createElement("a");
+    link.href = window.URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+  }
 }

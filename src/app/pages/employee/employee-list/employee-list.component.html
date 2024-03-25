@@ -73,6 +73,10 @@
                                 <button pTooltip="Deactivate" *ngIf="activeStatus" tooltipPosition="bottom" pButton
                                     pRipple type="button" icon="pi pi-times" (click)="onDeleteEmployee(employee.id)"
                                     class="p-button-rounded p-button-danger p-button-outlined mx-1"></button>
+                                <button pTooltip="Download Excel" tooltipPosition="bottom" *ngIf="activeStatus" pButton
+                                    pRipple type="button" icon="pi pi-download"
+                                    class="p-button-rounded p-button-success p-button-outlined mx-1"
+                                    (click)="openExcelDialog(employee.id)"></button>
                                 <button pTooltip="Activate" tooltipPosition="bottom" *ngIf="!activeStatus" pButton
                                     pRipple type="button" icon="pi pi-check"
                                     class="p-button-rounded p-button-success p-button-outlined mx-2"
@@ -91,19 +95,34 @@
             </div>
         </div>
 
-        <p-dialog [(visible)]="deleteEmployeeDialog" header="Confirm" [modal]="true" [style]="{ width: '450px' }">
-            <div class="flex align-items-center justify-content-center">
-                <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
-                <span>Are you sure you want to deactivate selected Employee?</span>
-            </div>
-            <ng-template pTemplate="footer">
-                <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No"
-                    (click)="deleteEmployeeDialog = false"></button>
-                <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Yes"
-                    (click)="confirmDeleteSelected()"></button>
-            </ng-template>
-        </p-dialog>
-    </div>
+        <p-dialog header="Download Excel Report" [(visible)]="visible" [modal]="true" [style]="{ width: '70vw' }" [draggable]="false" class="customDialogExcel"
+    [resizable]="false">
+    <form action="" [formGroup]="excelDataForm" (ngSubmit)="onDownloadExcel(excelDataForm.value,id)" class="mt-6">
+        <div class="p-fluid p-formgrid grid">
+                    <div class="field col-6">
+                        <label >From Date</label>
+                        <p-calendar dateFormat="yy-mm-dd" [showIcon]="true" placeholder="Select From Date"
+                            formControlName="fromDate" appendTo="body" [ngClass]="{'ng-dirty':excelDataForm.get('fromDate')?.touched && excelDataForm.get('fromDate')?.invalid}"></p-calendar>
+                            <small *ngIf="!excelDataForm.get('fromDate')?.valid && excelDataForm.get('fromDate')?.touched" class="text-red-500">
+                                Required
+                            </small>
+                    </div>
+
+                    <div class="field col-6">
+                        <label >To Date</label>
+                        <p-calendar dateFormat="yy-mm-dd"  class="customCalender" [showIcon]="true" placeholder="Select To Date"
+                            formControlName="toDate" appendTo="body" [ngClass]="{'ng-dirty':excelDataForm.get('toDate')?.touched && excelDataForm.get('toDate')?.invalid}"></p-calendar>
+                            <small *ngIf="!excelDataForm.get('toDate')?.valid && excelDataForm.get('toDate')?.touched" class="text-red-500">
+                                Required
+                            </small>
+                    </div>
+        </div>
+        <div class="flex justify-content-center w-full mt-5">
+            <button pButton label="Download" type="Submit" class="mx-3 submit-btn"  ></button>
+            <button pButton label="Cancel" (click)="onCancel()" type="button" class="mx-3 cancel-btn"></button>
+        </div>
+    </form>
+    </p-dialog>
 
     <p-toast [breakpoints]="{ '920px': { width: '100%', right: '0', left: '0' } }"></p-toast>
 </div>
