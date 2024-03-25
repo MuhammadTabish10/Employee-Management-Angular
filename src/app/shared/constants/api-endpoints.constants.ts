@@ -34,6 +34,7 @@ export const API_ENDPOINTS = {
     GET_ALL_USER_URL: `${environment.baseUrl}/user/status/`,
     ADD_USER_URL: `${environment.baseUrl}/signup`,
     GET_USER_BY_ID_URL: `${environment.baseUrl}/user/`,
+    GET_CURRENT_USER_URL: `${environment.baseUrl}/current-user`,
     DELETE_USER_BY_ID_URL: `${environment.baseUrl}/user/`,
     UPDATE_USER_BY_ID_URL: `${environment.baseUrl}/user/`,
     UPDATE_USER_STATUS_TO_ACTIVE_URL: `${environment.baseUrl}/user/`,

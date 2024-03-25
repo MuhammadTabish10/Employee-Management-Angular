@@ -27,6 +27,12 @@ export class UserService {
     );
   }
 
+  getCurrentUser(): Observable<User> {
+    return this.http.get<User>(
+      `${API_ENDPOINTS.GET_CURRENT_USER_URL}`
+    );
+  }
+
   deleteUserById(id: number): Observable<any> {
     return this.http.delete<any>(
       `${API_ENDPOINTS.DELETE_USER_BY_ID_URL}${id}`

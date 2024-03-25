@@ -6,7 +6,7 @@
         <div class="p-fluid p-formgrid grid">
             <div class="field col-12 md:col-6">
                 <label htmlFor="firstName"><strong>First Name</strong></label>
-                <input pInputTextarea id="firstName" rows="4" formControlName="firstName" placeholder="Enter FirstName"
+                <input pInputTextarea id="firstName" rows="4" formControlName="firstName" placeholder="Enter First Name"
                     [ngClass]="{'ng-dirty':employeeForm.get('firstName')?.touched && employeeForm.get('firstName')?.invalid}" />
                 <small *ngIf="!employeeForm.get('firstName')?.valid && employeeForm.get('firstName')?.touched" class="text-red-500">
                     Required

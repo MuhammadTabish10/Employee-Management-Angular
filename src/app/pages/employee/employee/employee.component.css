@@ -22,3 +22,8 @@
 label {
   font-weight: bold;
 }
+
+:host ::ng-deep .p-button {
+  background: #2b2d42;
+  border: 1px solid #2b2d42;
+}
