@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ROUTES } from '../../shared/constants/routes.constants';
+import { User } from '../../core/models/user.model';
+import { UserService } from '../../core/services/user.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,8 +11,22 @@ import { ROUTES } from '../../shared/constants/routes.constants';
 })
 export class SidebarComponent {
   sidebarVisible: boolean = false;
+  user!: User;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private userService: UserService
+  ) {}
+
+  ngOnInit() {
+    this.getLoggedInUser();
+  }
+
+  getLoggedInUser() {
+    this.userService.getCurrentUser().subscribe((res: any) => {   
+      this.user = res;
+    });
+  }
 
   navigateToHome() {
     this.router.navigateByUrl(ROUTES.HOME);

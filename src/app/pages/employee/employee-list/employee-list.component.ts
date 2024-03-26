@@ -9,7 +9,6 @@ import { finalize } from 'rxjs';
 import { ROUTES } from '../../../shared/constants/routes.constants';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { error } from 'console';
 
 @Component({
   selector: 'app-employee-list',
@@ -44,8 +43,6 @@ export class EmployeeListComponent {
     });
     this.getAllEmployees();
   }
-
-
 
   options: SelectItem[] = [
     { label: 'Active', value: 'Active' },
@@ -141,7 +138,7 @@ export class EmployeeListComponent {
               summary: "Success",
               detail: "Download Successfull",
             }),
-              this.excelDataForm.reset();
+            this.excelDataForm.reset();
             this.visible = false;
           },
           error: (error) => {

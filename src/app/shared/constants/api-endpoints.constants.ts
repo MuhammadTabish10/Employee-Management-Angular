@@ -44,6 +44,9 @@ export const API_ENDPOINTS = {
     GET_ROLE_BY_ID_URL: `${environment.baseUrl}/role/`,
     UPDATE_ROLE_BY_ID_URL: `${environment.baseUrl}/role/`,
 
+    GET_ALL_PERMISSION_URL: `${environment.baseUrl}/permission`,
+    GET_PERMISSION_BY_ID_URL: `${environment.baseUrl}/permission/`,
+
     GET_ALL_ATTENDANCE_URL: `${environment.baseUrl}/attendance/status/`,
     ADD_ATTENDANCE_URL: `${environment.baseUrl}/attendance`,
     GET_ATTENDANCE_BY_ID_URL: `${environment.baseUrl}/attendance/`,
