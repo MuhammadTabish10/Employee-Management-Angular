@@ -3,11 +3,15 @@ import { RouterModule, Routes } from "@angular/router";
 import { ROUTES } from './shared/constants/routes.constants';
 import { LoginComponent } from './pages/login/login.component';
 import { LayoutComponent } from './layouts/layout/layout.component';
+import { authguardService } from "./core/guards/auth.guard.service";
+import { AccessdeniedComponent } from "./pages/accessdenied/accessdenied.component";
+import { PermissionsComponent } from "./pages/permissions/permissions.component";
 
 const routes: Routes = [
   {
     path: "",
     component: LayoutComponent,
+    canActivate: [authguardService],
     children: [
       {
         path: ROUTES.HOME,
@@ -15,6 +19,7 @@ const routes: Routes = [
           import("./pages/home/home.module").then(
             (m) => m.HomeModule
           ),
+          canActivate: [authguardService],
       },
       {
         path: ROUTES.EMPLOYEE_LIST,
@@ -22,6 +27,7 @@ const routes: Routes = [
           import("./pages/employee/employee.module").then(
             (m) => m.EmployeeModule
           ),
+          canActivate: [authguardService],
       },
       {
         path: ROUTES.EMPLOYEE,
@@ -29,6 +35,7 @@ const routes: Routes = [
           import("./pages/employee/employee/modules/employee-form.module").then(
             (m) => m.EmployeeFormModule
           ),
+          canActivate: [authguardService],
       },
       {
         path: ROUTES.USER_LIST,
@@ -36,6 +43,7 @@ const routes: Routes = [
           import("./pages/user/user.module").then(
             (m) => m.UserModule
           ),
+          canActivate: [authguardService],
       },
       {
         path: ROUTES.USER,
@@ -43,6 +51,7 @@ const routes: Routes = [
           import("./pages/user/user/modules/user-form.module").then(
             (m) => m.UserFormModule
           ),
+          canActivate: [authguardService],
       },
       {
         path: ROUTES.JOB_TITLE_LIST,
@@ -50,6 +59,7 @@ const routes: Routes = [
           import("./pages/job-title/job-title.module").then(
             (m) => m.JobTitleModule
           ),
+          canActivate: [authguardService],
       },
       {
         path: ROUTES.JOB_TITLE,
@@ -57,6 +67,7 @@ const routes: Routes = [
           import("./pages/job-title/job-title/job-title/modules/job-title-form.module").then(
             (m) => m.JobTitleFormModule
           ),
+          canActivate: [authguardService],
       },
       {
         path: ROUTES.DEPARTMENT_LIST,
@@ -64,6 +75,7 @@ const routes: Routes = [
           import("./pages/department/department.module").then(
             (m) => m.DepartmentModule
           ),
+          canActivate: [authguardService],
       },
       {
         path: ROUTES.DEPARTMENT,
@@ -71,6 +83,7 @@ const routes: Routes = [
           import("./pages/department/department/modules/department-form.module").then(
             (m) => m.DepartmentFormModule
           ),
+          canActivate: [authguardService],
       },
       {
         path: ROUTES.ATTENDANCE_LIST,
@@ -78,6 +91,7 @@ const routes: Routes = [
           import("./pages/attendance/attendance.module").then(
             (m) => m.AttendanceModule
           ),
+          canActivate: [authguardService],
       },
       {
         path: ROUTES.ATTENDANCE,
@@ -85,11 +99,21 @@ const routes: Routes = [
           import("./pages/attendance/attendance/modules/attendance-form.module").then(
             (m) => m.AttendanceFormModule
           ),
+          canActivate: [authguardService],
       },
+      {
+        path: ROUTES.PERMISSIONS,
+        loadChildren: () =>
+          import("./pages/permissions/permissions.module").then(
+            (m) => m.PermissionsModule
+          ),
+        canActivate: [authguardService],
+      }
     ],
   },
   { path: ROUTES.LOGIN, component: LoginComponent },
   { path: '', redirectTo: ROUTES.LOGIN, pathMatch: 'full'},
+  { path: ROUTES.ACCESS, component: AccessdeniedComponent },
   // { path: "**", redirectTo: "/notfound" },
 ];
 

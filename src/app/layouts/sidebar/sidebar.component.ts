@@ -62,4 +62,9 @@ export class SidebarComponent {
     this.router.navigateByUrl(ROUTES.SALARY_LIST);
     this.sidebarVisible = false;
   }
+
+  navigateToPermissions() {
+    this.router.navigateByUrl(ROUTES.PERMISSIONS);
+    this.sidebarVisible = false;
+  }
 }

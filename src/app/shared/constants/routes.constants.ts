@@ -17,6 +17,8 @@ export const ROUTES = {
     SALARY_LIST: 'salary/list',
     SALARY: 'salary',
     SALARY_VIEW: 'salary/view',
-    PAGE_NOT_FOUND: '404'
+    PERMISSIONS: 'permissions',
+    PAGE_NOT_FOUND: '404',
+    ACCESS: 'access',
   };
   

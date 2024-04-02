@@ -17,8 +17,8 @@ export class RoleService {
     );
   }
 
-  addRole(role: Role): Observable<Role> {
-    return this.http.post<Role>(API_ENDPOINTS.ADD_JOB_TITLE_URL, role);
+  addRolePermissions(role: Role): Observable<Role> {
+    return this.http.post<Role>(API_ENDPOINTS.ADD_ROLE_URL, role);
   }
 
   getRoleById(id: number): Observable<Role> {

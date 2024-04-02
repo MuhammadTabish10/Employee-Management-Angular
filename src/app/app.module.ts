@@ -7,13 +7,16 @@ import { LoginModule } from './pages/login/login.module';
 import { HomeModule } from './pages/home/home.module';
 import { LayoutModule } from './layouts/layout.module';
 import { SharedModule } from './shared/shared.module';
+import { ButtonModule } from "primeng/button";
 
 import { authInterceptor } from './core/interceptors/auth.interceptor';
 import { AppComponent } from './app.component';
+import { AccessdeniedComponent } from './pages/accessdenied/accessdenied.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AccessdeniedComponent
   ],
   imports: [
     BrowserModule,
@@ -21,6 +24,7 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     LoginModule,
     HomeModule,
+    ButtonModule,
     LayoutModule,
     SharedModule,
     HttpClientModule,
