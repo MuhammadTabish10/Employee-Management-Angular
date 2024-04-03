@@ -31,7 +31,6 @@ export class PermissionsComponent {
   ) {}
 
   ngOnInit() {
-    debugger
     this.formSetup();
     this.getAllRoles();
     this.getAllPermissions();

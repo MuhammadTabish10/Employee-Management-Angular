@@ -8,7 +8,6 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextModule } from "primeng/inputtext";
 
 import { PermissionsComponent } from './permissions.component';
-import { PermissionsRoutingModule } from "./permissions-routing.module";
 
 @NgModule({
   declarations: [PermissionsComponent],
@@ -20,8 +19,6 @@ import { PermissionsRoutingModule } from "./permissions-routing.module";
     ButtonModule,
     CheckboxModule,
     FormsModule,
-    InputTextModule,
-    PermissionsRoutingModule
-  ]
+    InputTextModule  ]
 })
 export class PermissionsModule { }
