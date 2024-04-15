@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { UserService } from '../services/user.service';
-import { authguardService } from './auth.guard.service';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,6 @@ import { authguardService } from './auth.guard.service';
 export class UserSessionService {
   userPermissions: string[] = [];
   roleName!: String;
-  authGuardService = inject(authguardService);
 
   constructor(
     private userService: UserService
@@ -18,7 +17,7 @@ export class UserSessionService {
 
   updatePermission() {
     const token = localStorage.getItem("token");
-    const decodedToken = this.authGuardService.getDecodedAccessToken(token!);
+    const decodedToken = this.getDecodedToken(token!);
 
     if (decodedToken) {
       let decodedTokenPermissions = decodedToken.PERMISSIONS;
@@ -43,6 +42,14 @@ export class UserSessionService {
 
   getRoleName() {
     return this.roleName;
+  }
+
+  getDecodedToken(token: string): any {
+    try {
+      return jwtDecode(token);
+    } catch (Error) {
+      console.error('Error decoding JWT token:' + Error);
+    }
   }
 
 }

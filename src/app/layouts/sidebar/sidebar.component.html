@@ -4,38 +4,14 @@
             <img src="../../../assets/images/logo-bg.png" height="90"/>
         </ng-template>
         <ng-template pTemplate="content">
-            <span class="sidebar-item p-2 border-round hover:surface-100" (click)="navigateToHome()">
-                <i class="pi pi-fw pi-home mr-2"></i>
-                Home
-            </span>
-            <span class="sidebar-item p-2 border-round hover:surface-100" (click)="navigateToEmployeeList()">
-                <i class="pi pi-users mr-2"></i>
-                Employees
-            </span>
-            <span class="sidebar-item p-2 border-round hover:surface-100" (click)="navigateToDepartmentList()">
-                <i class="pi pi-database mr-2"></i>
-                Departments
-            </span>
-            <span class="sidebar-item p-2 border-round hover:surface-100" (click)="navigateToJobTitleList()">
-                <i class="pi pi-id-card mr-2"></i>
-                JobTitles
-            </span>
-            <span class="sidebar-item p-2 border-round hover:surface-100" (click)="navigateToAttendanceList()">
-                <i class="pi pi-calendar mr-2"></i>
-                Attendance
-            </span>
-            <span class="sidebar-item p-2 border-round hover:surface-100" (click)="navigateToSalaryList()">
-                <i class="pi pi-money-bill mr-2"></i>
-                Salary
-            </span>
-            <span class="sidebar-item p-2 border-round hover:surface-100" (click)="navigateToPermissions()">
-                <i class="pi pi-shield mr-2"></i>
-                Permissions
-            </span>
-            <span class="sidebar-item p-2 border-round hover:surface-100" (click)="navigateToUserList()">
-                <i class="pi pi-user mr-2"></i>
-                Users
-            </span>
+            <ng-container *ngFor="let item of sidebarItems">
+                <span class="sidebar-item p-2 border-round hover:surface-100" 
+                      (click)="navigate(item.route)"
+                      *ngIf="hasPermission(item.permission)">
+                    <i class="pi pi-fw {{item.icon}} mr-2"></i>
+                    {{ item.label }}
+                </span>
+            </ng-container>
         </ng-template>
         
         <ng-template pTemplate="footer">

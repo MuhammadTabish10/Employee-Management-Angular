@@ -7,10 +7,11 @@ import { ButtonModule } from "primeng/button";
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextModule } from "primeng/inputtext";
 
-import { PermissionsComponent } from './permissions.component';
+import { PermissionComponent } from './permission.component';
 
 @NgModule({
-  declarations: [PermissionsComponent],
+  declarations: [PermissionComponent],
+  exports: [PermissionComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -21,4 +22,4 @@ import { PermissionsComponent } from './permissions.component';
     FormsModule,
     InputTextModule  ]
 })
-export class PermissionsModule { }
+export class PermissionModule { }

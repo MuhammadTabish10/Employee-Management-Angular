@@ -5,7 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { LayoutComponent } from './layouts/layout/layout.component';
 import { authguardService } from "./core/guards/auth.guard.service";
 import { AccessdeniedComponent } from "./pages/accessdenied/accessdenied.component";
-import { PermissionsComponent } from "./pages/permissions/permissions.component";
+import { PermissionComponent } from "./pages/permission/permission.component";
 
 const routes: Routes = [
   {
@@ -103,12 +103,9 @@ const routes: Routes = [
       },
       {
         path: ROUTES.PERMISSIONS,
-        loadChildren: () =>
-          import("./pages/permissions/permissions.module").then(
-            (m) => m.PermissionsModule
-          ),
+        component: PermissionComponent,
         canActivate: [authguardService],
-      }
+      },
     ],
   },
   { path: ROUTES.LOGIN, component: LoginComponent },

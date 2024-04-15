@@ -1,20 +1,18 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Role } from '../../core/models/role.model';
-import { Permission } from '../../core/models/permission.model';
-import { MessageService } from "primeng/api";
-import { RoleService } from '../../core/services/role.service';
 import { ActivatedRoute } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { Permission } from '../../core/models/permission.model';
+import { Role } from '../../core/models/role.model';
 import { PermissionService } from '../../core/services/permission.service';
-import { UserSessionService } from '../../core/guards/user-session.service';
+import { RoleService } from '../../core/services/role.service';
 
 @Component({
-  selector: 'app-permissions',
-  templateUrl: './permissions.component.html',
-  styleUrl: './permissions.component.css',
-  providers: [MessageService]
+  selector: 'app-permission',
+  templateUrl: './permission.component.html',
+  styleUrl: './permission.component.css'
 })
-export class PermissionsComponent {
+export class PermissionComponent {
   permissionsForm!: FormGroup;
   roles: Role[] = [];
   permissions: Permission[] = [];
@@ -26,7 +24,7 @@ export class PermissionsComponent {
     private messageService: MessageService,
     private roleService: RoleService,
     private permissionService: PermissionService,
-    private userSessionService: UserSessionService,
+    // private userSessionService: UserSessionService,
     private route: ActivatedRoute
   ) {}
 
